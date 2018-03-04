@@ -1,0 +1,201 @@
+fluff:
+  name:
+  player:
+  concept:
+  anima:
+  limitTrigger:
+  picture:
+  discription:
+  notes:
+
+isCreating: yes
+isEditing: yes
+
+# Splat should be able to swap in "new" validators easily
+# could also be a databank id perhaps?
+splat: solar
+caste: night # <- Actual values should be "lowecase"
+
+databanks: # list of ID's that provide data for the player
+# reserved keyword id's for me.
+- default_Core
+- default_MiraclesOfTheSolarExalted
+
+essence: 1
+limit: 0
+
+willpower:
+  starting:
+  current:
+  spent:
+
+health:
+  available:
+    0: 1
+    1: 2
+    2: 2
+    4: 1
+    incapacitated: 1
+  current:
+    0: [ aggrivated ]
+    1: [ lethal, lethal ]
+    2: [ bashing ]
+    4: []
+    incapacitated: []
+
+exp:
+  normal:
+    current:
+    spent:
+  solar:
+    current:
+    spent:
+
+motes:
+  personal:
+    max:
+    available:
+    spent:
+
+  peripheral:
+    max:
+    available:
+    spent:
+
+  committed: 6 # <- Automatically calculated
+
+  commits: # List of things to modify "committed"
+  - discription: Harmonious Presence Meditation
+    amount: 7
+    active: no
+    # note is just "notes" for player convienience
+  - discription: Keeping orphan alive
+    amount: 6
+    # And the "activeness" is useful for toggling things on and off and not having
+    # to re-enter
+    active: yes
+
+attributes:
+  primary: physical
+  secondary: social
+  tertiary: mental
+
+  physical:
+    strength:
+      # Class may be:
+      # missing/not pressent -> false
+      # null -> false
+      # one of
+      # - 'favoured'
+      # - 'supernal'
+      # for splats that care
+      # class:
+      value: 1
+    dexterity:
+      value: 1
+    stamina:
+      value: 1
+  social:
+    charisma:
+    manipulation:
+    appearance:
+  mental:
+    perception:
+    intelligence:
+    wits:
+
+abilities:
+  archery:
+    # class:
+    value: 1
+  athletics:
+  awareness:
+  brawl:
+  bureaucracy:
+  # Craft is probably going to have it's own thing
+  # handling it.
+  craft:
+    class: supernal
+    values: no # Craft cannot have points invested into.
+    highest: 5 # <- Auto calculatored
+  dodge:
+  integrity:
+  investigation:
+  larceny:
+  linguistics:
+  lore:
+  medicine:
+  melee:
+  occult:
+  performance:
+  presence:
+  resistan:
+  ride:
+  sail:
+  socialize:
+  stealth:
+  survival:
+  thrown:
+  war:
+
+# List of user entered things that are keyed off of a base thing
+#  cannot be "supernal" themselves
+abilityVariant:
+- name: Geomancy
+  source: craft
+
+abilitiesUser:
+- name: Oricalcum Chef
+  abilityName: oricalcumChef # <- A unique id for use in calculation fields
+  # Specifying a source allows you to "roll a charm"
+  # that specifys this ability
+  # and carry's over the supernal-ness of the source.
+  source: brawl
+  value:
+
+#abilitiesBank: # like "abilitiesUser" but provided for you.
+# It's going to probably be loaded with martial arts and such.
+
+specialties:
+- source: thrown
+  discription: From stealth
+- source: melee
+  discription: Knives
+
+intimacies:
+- value: 2
+  type: tie
+  discription: My home (joy)
+- value: 3
+  type: principle
+  discription: I use antlers in all of my decorating.
+
+merits:
+
+playerMerits:
+- name: Cult
+  value: 1
+  discription: Draw willpower
+  effect:
+
+selectableMerits:
+- value: 1
+  name: Cult
+  discription: Draw willpower
+  effect:
+- value: 2
+  name: Cult
+  discription:
+  effect:
+
+- value: 2
+  name: Boundless Endurance
+  discription: it's wow
+  requirementType: or # and
+  requirements:
+  - type: attribute
+    source: stamina
+    value: 3
+  - type: ability
+    source: resistance
+    value: 3
